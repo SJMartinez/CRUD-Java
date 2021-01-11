@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Formulario</title>
+  </head>
+  <body>
+    <h1>Nuevo cliente</h1>
+     	<form th:action="ingresarCliente" th:object="${duenio}" method="post">
+    <label>Nombre</label>
+    <input type="text" th:field="*{nombre}" 
+    placeholder="Ingrese nombre"/>
+     <label>Apellido</label>
+     <input type="text" th:field="*{apellido}" 
+    placeholder="Ingrese apellido"/>
+      <label>Dirección</label>
+     <input type="text" th:field="*{direccion}" 
+    placeholder="Ingrese dirección"/>
+          <label>Teléfono</label>
+     <input type="text" th:field="*{telefono}" 
+    placeholder="Ingrese teléfono"/>
+        <br/>     
+      <input type="submit" value="Enviar"/>
+    </form>
+  </body>
+</html>

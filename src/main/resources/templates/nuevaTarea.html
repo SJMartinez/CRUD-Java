@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Formulario</title>
+  </head>
+  <body>
+  	
+    <h1>Ingresar tarea</h1>
+     	<form th:action="ingresarTarea" th:object="${aspecto}" method="post">
+   
+    <label>Descripcion</label>
+    <input type="text" value="${aspecto.getDescripcion()}" th:field="*{descripcion}" 
+    placeholder="Ingrese descripcion"/>
+     <label>Horas invertidas</label>
+     <input type="text" value="${orden.getHoras()}" th:field="*{horas}" 
+    placeholder="Ingrese horas"/>
+    	      <br/>     
+      <input type="submit" value="Enviar"/>
+    </form>
+  </body>
+</html>

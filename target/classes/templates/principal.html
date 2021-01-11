@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+  
+    <title>Principal</title>
+  </head>
+  <body>
+    <h1>Listado</h1>
+
+	<td><a th:href="@{/ingresarCliente}">Ingresar cliente</a></td>	
+      <form th:action="principal"  method="post">
+          <label>Seleccione cliente</label>
+        <select th:name="idDuenio" onChange="this.form.submit()" >
+         <option  th:text="'Seleccione dueño'"></option>
+                	
+		<option th:each="i : ${duenio}"
+		th:value="${i.getIdDuenio()}"
+	
+		th:text="${i.getNombre()} + ' ' + ${i.getApellido()} "></option>
+		
+			</select>
+				</form>	
+	   
+  </body>
+</html>

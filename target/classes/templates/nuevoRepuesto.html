@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Formulario</title>
+  </head>
+  <body>
+  	
+    <h1>Nuevo repuesto</h1>
+     	<form th:action="ingresarRepuesto" th:object="${reparacion}" method="post">
+    
+    <label>Cantidad</label>
+    <input type="number"  th:field="${reparacion.cantidad}" 
+    placeholder="Ingrese cantidad"/>
+          	<select>
+         <option  th:text="'Seleccione repuesto'"></option>
+                	
+		<option 
+		th:each = "r : ${repuesto}"
+		th:value="${r.getIdRepuesto()}"
+		th:field="*{repuesto.idRepuesto}"
+		th:text="${r.getDescripcion()}"></option>
+			
+			</select>
+               
+      <input type="submit" value="Enviar"/>
+       </form>
+  </body>
+</html>

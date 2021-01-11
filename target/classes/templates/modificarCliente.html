@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Formulario</title>
+  </head>
+  <body>
+    <h1>Modificar cliente</h1>
+     	<form th:action="modificarCliente" th:object="${duenio}" method="post">
+     	  <input type="hidden" value="${duenio.getIdDuenio()}" th:field="*{idDuenio}"/>
+    <label>Nombre</label>
+    <input type="text" value="${duenio.getNombre()}" th:field="*{nombre}" 
+    placeholder="Ingrese nombre"/>
+     <label>Apellido</label>
+     <input type="text" value="${duenio.getApellido()}" th:field="*{apellido}" 
+    placeholder="Ingrese apellido"/>
+      <label>Dirección</label>
+     <input type="text" value="${duenio.getDireccion()}" th:field="*{direccion}" 
+    placeholder="Ingrese dirección"/>
+          <label>Teléfono</label>
+     <input type="text" value="${duenio.getTelefono()}" th:field="*{telefono}" 
+    placeholder="Ingrese teléfono"/>
+        <br/>     
+      <input type="submit" value="Enviar"/>
+    </form>
+  </body>
+</html>

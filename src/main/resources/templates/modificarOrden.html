@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Formulario</title>
+  </head>
+  <body>
+  	
+    <h1>Modificar automovil</h1>
+     	<form th:action="modificarOrden" th:object="${orden}" method="post">
+   <input type="hidden" value="${auto.getIdAuto()}" th:field="*{auto.idAuto}"/>
+   <input type="hidden" value="${orden.getIdOrden()}" th:field="*{idOrden}"/>
+    <input type="hidden" value="${orden.getSesiones().getUsuario()}" th:field="*{sesiones.usuario}"/>
+    <label>Descripcion</label>
+    <input type="text" value="${orden.getDescripcion()}" th:field="*{descripcion}" 
+    placeholder="Ingrese descripcion"/>
+     <label>Fecha de ingreso al sistema</label>
+     <input type="text" value="${orden.getFecha()}" th:field="*{fecha}" 
+    placeholder="Ingrese fecha de ingreso al sistema"/>
+    	<select  th:object="${orden}">
+         <option  th:text="'Seleccione estado'"></option>
+              	
+
+			</select>
+              <br/>     
+      <input type="submit" value="Enviar"/>
+    </form>
+  </body>
+</html>

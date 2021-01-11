@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+   <title>Listado</title>
+  </head>
+<body>
+	<table>
+		
+			<th>Orden</th>
+			
+		
+		<tr th:each ="i : ${reparacion}">
+			<div th:if="${i.getAspecto().getIdAspecto()} == ${idAspecto}">
+
+			<td th:text="'Repuesto: ' + ${i.getRepuesto().getDescripcion()}"></td>
+			<td th:text="'Coste unitario repuesto: ' + ${i.getRepuesto().getCoste()}"></td>
+			<td th:text="'Cantidad: ' + ${i.getCantidad()}"></td>
+			<td><a th:href="@{/borrarTarea(refe1=${i.getAspecto().getIdAspecto()}, refe2=${i.getIdReparacion()})}">Borrar tarea</a></td>
+			
+		    
+			</div>
+			</tr>
+		
+					
+			
+			
+	</table>
+	</body>
+	</html>

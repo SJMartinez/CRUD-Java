@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Formulario</title>
+  </head>
+  <body>
+    <h1>Modificar automovil</h1>
+     	<form th:action="ingresarAuto" th:object="${auto}" method="post">
+   <input type="hidden" value="${duenio.getIdDuenio()}" th:field="*{duenio.idDuenio}"/>
+      <label>Modelo</label>
+    <input type="text" value="${auto.getModelo()}" th:field="*{modelo}" 
+    placeholder="Ingrese modelo"/>
+     <label>Patente</label>
+     <input type="text" value="${auto.getPatente()}" th:field="*{patente}" 
+    placeholder="Ingrese patente"/>
+              <br/>     
+      <input type="submit" value="Enviar"/>
+    </form>
+  </body>
+</html>

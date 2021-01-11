@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+   <title>Listado</title>
+  </head>
+<body>
+	<table>
+	
+			<th>Cliente</th>
+			
+			
+			
+		<tr th:each ="i : ${duenio}">
+			<div th:if="${i.getIdDuenio()} == ${idDuenio}">
+				<td th:text="'Nombre: ' + ${i.getNombre()}"></td>
+				<td th:text="'Apellido: ' + ${i.getApellido()}"></td>
+				<td th:text="'Direccion: ' + ${i.getDireccion()}"></td>
+				<td th:text="'Teléfono: ' + ${i.getTelefono()}"></td>			
+				<td><a th:href="@{/borrarCliente(refe=${i.getIdDuenio()})}">Borrar cliente</a></td>
+				<td><a th:href="@{/modificarCliente(refe=${i.getIdDuenio()})}">Modificar cliente</a></td>
+				<td><a th:href="@{/ingresarAuto(refe=${i.getIdDuenio()})}">Asignar automovil</a></td>	
+	
+		    	<td th:text="'Automoviles a nombre del cliente'"></td>
+					<tr th:each="a : ${autos}">
+				 
+						<div th:if="${a.getDuenio().getIdDuenio()} == ${i.getIdDuenio()}">
+				 			<td th:text="'Modelo: ' + ${a.getModelo()}"></td>
+							<td th:text="'Patente: ' + ${a.getPatente()}"></td>
+			
+							<td><a th:href="@{/listarOrdenes(refe=${a.getIdAuto()})}">Listar ordenes de trabajo</a></td>
+							<td><a th:href="@{/ingresarOrden(refe=${a.getIdAuto()})}">Ingresar orden</a></td>	
+							<td><a th:href="@{/borrarAuto(refe2=${a.getIdAuto()},refe1=${i.getIdDuenio()})}">Borrar automovil</a></td>
+							<td><a th:href="@{/modificarAuto(refe=${a.getIdAuto()}, refe1=${i.getIdDuenio()})}">Modificar automovil</a></td>
+						</div>
+					</tr>
+			</div>			
+		</tr>
+					
+			
+			
+	</table>
+	</body>
+	</html>

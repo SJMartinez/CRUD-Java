@@ -1,0 +1,45 @@
+
+
+
+<html>
+  <head>
+
+   <link rel="stylesheet" type="text/css" href="css/bootstrap-css.css"></link>
+
+  </head>
+<body id="LoginForm">
+<div class="container">
+<h1 class="form-heading">Login</h1>
+<div class="login-form">
+<div class="main-div">
+    <div class="panel">
+   <h2>Crear cuenta</h2>
+   <p>Por favor ingrese usuario y contraseña</p>
+   </div>
+    <form th:action="crearr" th:object="${session2}" method="post">
+
+        <div class="form-group">
+
+
+            <input type="text" class="form-control" th:field="*{usuario}"  placeholder="Usuario"></input>
+
+        </div>
+
+        <div class="form-group">
+
+            <input type="password" class="form-control" th:field="*{contrasenia}"  placeholder="Password"></input>
+
+        </div>
+       
+        <button type="submit" class="btn btn-primary">Login</button>
+
+    </form>
+    
+    </div>
+
+</div></div>
+
+
+
+</body>
+</html>

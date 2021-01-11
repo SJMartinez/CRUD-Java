@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+   <title>Listado</title>
+  </head>
+<body>
+	<table>
+		
+			<th>Orden</th>
+			
+			
+		<tr th:each ="i : ${orden}">
+			<div th:if="${i.getAuto().getIdAuto()} == ${idAuto}">
+			<td th:text="'Ingresada por el usuario: ' + ${i.getSesiones().getUsuario()}"></td>
+			<td th:text="'Descripcion: ' + ${i.getDescripcion()}"></td>
+			<div th:if="${i.isAbierta()} == true">
+			<td th:text="'Orden abierta'"></td>
+			</div>
+			<div th:if="${i.isAbierta()} == false">
+			<td th:text="'Orden cerrada'"></td>
+			</div>
+			<td th:text="'Fecha ingreso: ' + ${i.getFecha()}"></td>
+			<td><a th:href="@{/borrarOrden(refe1=${i.getAuto().getIdAuto()}, refe2=${i.getIdOrden()})}">Borrar orden</a></td>
+			<td><a th:href="@{/modificarOrden(refe=${i.getIdOrden()}, refe1=${i.getAuto().getIdAuto()})}">Modificar orden</a></td>
+				<td><a th:href="@{/ingresarTarea(refe=${i.getIdOrden()})}">Ingresar tarea</a></td>	
+			<td><a th:href="@{/cerrarAbrir(refe1=${i.getIdOrden()})}">Cerrar abrir</a></td>
+						
+		    <td th:text="'Tareas realizadas en la orden'"></td>
+			<tr th:each="a : ${aspectos}">
+				 
+			<div th:if="${a.getOrden().getIdOrden()} == ${i.getIdOrden()}">
+			 <td th:text="'Descripcion de la tarea: ' + ${a.getDescripcion()}"></td>
+			<td th:text="'Cantidad de horas de trabajo invertidas: ' + ${a.getHoras()}"></td>
+			
+			<td><a th:href="@{/listarRepuestos(refe=${a.getIdAspecto()})}">Listar repuestos de la tarea</a></td>
+			
+			<td><a th:href="@{/borrarAspecto(refe1=${a.getIdAspecto()}, refe2=${i.getIdOrden()})}">Borrar tarea</a></td>
+			<td><a th:href="@{/modificarTarea(refe=${a.getIdAspecto()}, refe1=${i.getIdOrden()})}">Modificar tarea</a></td>
+		<td><a th:href="@{/ingresarRepuesto(refe=${a.getIdAspecto()}, refe1=${i.getIdOrden()})}">Ingresar repuesto</a></td>
+			
+			</div>
+			</tr>
+			</div>			
+			</tr>
+			
+			<td><a th:href="@{/calcular}">Calcular total</a></td>
+			<div th:if="${total} != null">
+			<td th:text="'El total es de ' + ${total} + ' pesos.'"></td>
+			</div>
+					
+			
+	
+	</table>
+	</body>
+	</html>

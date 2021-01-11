@@ -1,0 +1,16 @@
+
+<html>
+  <head>
+
+   <link rel="stylesheet" type="text/css" href="css/bootstrap-css.css"></link>
+
+  </head>
+  <body>
+	<tr th:each="s : ${sesion}">
+	<label th:text = "${mensaje}"></label>
+	<td><a th:href="@{/principal}">Principal</a></td>
+
+  </tr>
+
+</body>
+</html>
